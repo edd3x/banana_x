@@ -3,7 +3,7 @@ Mapping Banana Plantations in Costa Rica with Sentinel 1 (SAR), Sentinel 2 and D
 
 The plots below show classification maps and maps of pixels classified as banana plantations
 
-Fig A. Pixel classified as banana plantations
+Fig A. Pixels classified as banana plantations
 
 ![Alt image](https://github.com/edd3x/banana_x/blob/main/maps/banana.png)
 
