@@ -1,0 +1,48 @@
+<graph id="GraphMultiSizeMosaicOp">
+  <version>1.0</version>
+  <node id="ProductSet-Reader">
+    <operator>ProductSet-Reader</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <fileList>$inputList0, $inputList1, $inputList2, $inputList3</fileList>
+    </parameters>
+  </node>
+  <node id="Multi-size_Mosaic">
+    <operator>Multi-size Mosaic</operator>
+    <sources>
+      <sourceProduct refid="ProductSet-Reader"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <variables>
+        <variable>
+          <name>${BandName1}</name>
+          <expression>${BandName1}</expression>
+        </variable>
+      </variables>
+      <conditions/>
+      <combine>OR</combine>
+      <crs>EPSG:4326</crs>
+      <orthorectify>false</orthorectify>
+      <elevationModelName>ACE30</elevationModelName>
+      <westBound>-84.27214968</westBound>
+      <northBound>10.85056221</northBound>
+      <eastBound>-82.7301571</eastBound>
+      <southBound>8.93953967</southBound>
+      <pixelSizeX>10.0</pixelSizeX>
+      <pixelSizeY>10.0</pixelSizeY>
+      <resampling>Nearest</resampling>
+      <nativeResolution>true</nativeResolution>
+      <overlappingMethod>MOSAIC_TYPE_OVERLAY</overlappingMethod>
+    </parameters>
+  </node>
+  <node id="Write">
+    <operator>Write</operator>
+      <sources>
+          <sourceProduct refid="Multi-size_Mosaic"/>
+      </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>$out1</file>
+      <formatName>BEAM-DIMAP</formatName>
+    </parameters>
+  </node>
+</graph>

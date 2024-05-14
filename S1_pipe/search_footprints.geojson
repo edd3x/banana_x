@@ -1,0 +1,1 @@
+<gml:Polygon srsName="http://www.opengis.net/gml/srs/epsg.xml#4326" xmlns:gml="http://www.opengis.net/gml"> <gml:outerBoundaryIs> <gml:LinearRing> <gml:coordinates>9.238458,-82.587044 9.686749,-84.830421 11.189907,-84.505379 10.745225,-82.250092 9.238458,-82.587044</gml:coordinates> </gml:LinearRing> </gml:outerBoundaryIs> </gml:Polygon>

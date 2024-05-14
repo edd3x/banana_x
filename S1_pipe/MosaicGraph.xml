@@ -1,0 +1,62 @@
+<graph id="Graph">
+  <version>1.0</version>
+  <node id="Read">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>/Users/eddie/Downloads/S1A_IW_GRDH_1SDV_20171230T112227_20171230T112252_019931_021EF6_C7AA_DB.dim</file>
+    </parameters>
+  </node>
+  <node id="Read(2)">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>/Users/eddie/Downloads/S1A_IW_GRDH_1SDV_20171230T112252_20171230T112317_019931_021EF6_602F_DB.dim</file>
+    </parameters>
+  </node>
+  <node id="SAR-Mosaic">
+    <operator>SAR-Mosaic</operator>
+    <sources>
+      <sourceProduct refid="Read"/>
+      <sourceProduct.1 refid="Read(2)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands/>
+      <resamplingMethod>NEAREST_NEIGHBOUR</resamplingMethod>
+      <average>true</average>
+      <normalizeByMean>true</normalizeByMean>
+      <gradientDomainMosaic>false</gradientDomainMosaic>
+      <pixelSize>10.0</pixelSize>
+      <sceneWidth>31758</sceneWidth>
+      <sceneHeight>38624</sceneHeight>
+      <feather>0</feather>
+      <maxIterations>5000</maxIterations>
+      <convergenceThreshold>1.0E-4</convergenceThreshold>
+    </parameters>
+  </node>
+  <node id="Write">
+    <operator>Write</operator>
+    <sources>
+      <sourceProduct refid="SAR-Mosaic"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>/Volumes/External_disk_1TB/S1/tryS1/mosaic.dim</file>
+      <formatName>BEAM-DIMAP</formatName>
+    </parameters>
+  </node>
+  <applicationData id="Presentation">
+    <Description/>
+    <node id="Read">
+      <displayPosition x="39.0" y="45.0"/>
+    </node>
+    <node id="Read(2)">
+      <displayPosition x="38.0" y="166.0"/>
+    </node>
+    <node id="SAR-Mosaic">
+      <displayPosition x="213.0" y="111.0"/>
+    </node>
+    <node id="Write">
+      <displayPosition x="440.0" y="115.0"/>
+    </node>
+  </applicationData>
+</graph>

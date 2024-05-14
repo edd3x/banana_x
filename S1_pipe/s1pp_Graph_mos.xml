@@ -1,0 +1,64 @@
+<graph id="Graph">
+  <version>1.0</version>
+  <node id="SAR-Mosaic">
+    <operator>SAR-Mosaic</operator>
+    <sources>
+      <sourceProduct.2 refid="ProductSet-Reader"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands/>
+      <resamplingMethod>NEAREST_NEIGHBOUR</resamplingMethod>
+      <average>true</average>
+      <normalizeByMean>true</normalizeByMean>
+      <gradientDomainMosaic>false</gradientDomainMosaic>
+      <pixelSize>10.0</pixelSize>
+      <sceneWidth>31769</sceneWidth>
+      <sceneHeight>38470</sceneHeight>
+      <feather>0</feather>
+      <maxIterations>5000</maxIterations>
+      <convergenceThreshold>1.0E-4</convergenceThreshold>
+    </parameters>
+  </node>
+  <node id="Import-Vector">
+    <operator>Import-Vector</operator>
+    <sources>
+      <sourceProduct refid="SAR-Mosaic"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <vectorFile>/Users/eddie/Desktop/banana_wd/costa_shp/aoi_shp/ISO_CRI.shp</vectorFile>
+      <separateShapes>true</separateShapes>
+    </parameters>
+  </node>
+  <node id="Write">
+    <operator>Write</operator>
+    <sources>
+      <sourceProduct refid="Import-Vector"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>/Volumes/External_disk_1TB/S1/procs/S1_merged/mosaic.dim</file>
+      <formatName>BEAM-DIMAP</formatName>
+    </parameters>
+  </node>
+  <node id="ProductSet-Reader">
+    <operator>ProductSet-Reader</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <fileList>/Volumes/External_disk_1TB/S1/S1A_IW_GRDH_1SDV_20190331T234811_20190331T234836_026589_02FB37_0B12.dim,/Volumes/External_disk_1TB/S1/S1A_IW_GRDH_1SDV_20190331T234836_20190331T234901_026589_02FB37_2405.dim</fileList>
+    </parameters>
+  </node>
+  <applicationData id="Presentation">
+    <Description/>
+    <node id="SAR-Mosaic">
+      <displayPosition x="234.0" y="115.0"/>
+    </node>
+    <node id="Import-Vector">
+      <displayPosition x="374.0" y="180.0"/>
+    </node>
+    <node id="Write">
+      <displayPosition x="472.0" y="258.0"/>
+    </node>
+    <node id="ProductSet-Reader">
+      <displayPosition x="25.0" y="105.0"/>
+    </node>
+  </applicationData>
+</graph>
